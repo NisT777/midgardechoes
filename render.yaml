@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: midgardechoes-bot
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx tsx api/bot/start-bot-only.ts
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
